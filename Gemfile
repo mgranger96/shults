@@ -8,8 +8,6 @@ gem 'rails', '3.2.12'
 gem 'sqlite3'
 gem 'devise'
 gem 'simple_form'
-gem "mongrel", "~> 1.1.5"
-gem 'therubyracer'
 
 
 # Gems used only for assets and not required
