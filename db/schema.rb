@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(:version => 20130515005711) do
   add_index "updates", ["user_id"], :name => "index_updates_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "dealership"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
