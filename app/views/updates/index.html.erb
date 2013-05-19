@@ -1,0 +1,155 @@
+
+
+<%if user_signed_in? %>
+
+<h1>Summary Report</h1>
+
+<% @@total = 0 %>
+
+<% @@esc_total = 0 %>
+<% @@esc_count = 0 %>
+
+<% @@esfl_total = 0 %>
+<% @@esfl_count = 0 %>
+
+<% @@ecbg_total = 0 %>
+<% @@ecbg_count = 0 %>
+
+<% @@sns_total = 0 %>
+<% @@sns_count = 0 %>
+
+<% @@sts_total = 0 %>
+<% @@sts_count = 0 %>
+
+<% @@esw_total = 0 %>
+<% @@esw_count = 0 %>
+
+<% @@ssl_total = 0 %>
+<% @@ssl_count = 0 %>
+
+<% @@src_total = 0 %>
+<% @@src_count = 0 %>
+
+<% @@sw_total = 0 %>
+<% @@sw_count = 0 %>
+
+
+<% @updates.each do |update| %>
+    <% @@total = update.amout + @@total %>
+
+    <% case update.dealership %>
+        <% when "Ed Shults Chevy" %>
+           <% @@esc_total = update.amout + @@esc_total %>
+            <% @@esc_count = @@esc_total/50 %>
+        <% when "Ed Shults Ford Lincoln" %>
+            <% @@esfl_total = update.amout + @@esfl_total %>
+            <% @@esfl_count = @@esfl_total/50 %>
+        <% when "Shults Nissan Subaru" %>
+            <% @@sns_total = update.amout + @@sns_total %>
+            <% @@sns_count = @@sns_total/50 %>
+        <% when "Shults Toyota Scion" %>
+            <% @@sts_total = update.amout + @@sts_total %>
+            <% @@sts_count = @@sts_total/50 %>
+        <% when "Ed Shults of Warren" %>
+            <% @@esw_total = update.amout + @@esw_total %>
+            <% @@esw_count = @@esw_total/50 %>
+        <% when "Shults Sales & Leasing" %>
+            <% @@ssl_total = update.amout + @@ssl_total %>
+            <% @@ssl_count = @@ssl_total/50 %>
+        <% when "Shults Resale Center" %>
+            <% @@src_total = update.amout + @@src_total %>
+            <% @@src_count = @@src_total/50 %>
+        <% when "Shults of Westfield" %>
+            <% @@sw_total = update.amout + @@sw_total %>
+            <% @@sw_count = @@sw_total/50 %>
+        <% when "Edmond Chevy Buick GMC" %>
+            <% @@ecbg_total = update.amout + @@ecbg_total %>
+            <% @@ecbg_count = @@ecbg_total/50 %>
+    <% end %>
+
+<% end %>
+Total: $<%= @@total %>.00
+
+<table class="table table-striped">
+    <tr>
+        <th>Dealership</th>
+        <th>Number of Entries</th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <td>Ed Shults Chevy</td>
+        <td><%= @@esc_count %></td>
+        <td>$<%= @@esc_total %>.00</td>
+    </tr>
+    <tr>
+        <td>Ed Shults Ford Lincoln</td>
+        <td><%= @@esfl_count %></td>
+        <td>$<%= @@esfl_total %>.00</td>
+    </tr>
+    <tr>
+        <td>Edmond Chevy Buick GMC</td>
+        <td><%= @@ecbg_count %></td>
+        <td>$<%= @@ecbg_total %>.00</td>
+    </tr>
+    <tr>
+        <td>Shults Nissan Subaru</td>
+        <td><%= @@sns_count %></td>
+        <td>$<%= @@sns_total %>.00</td>
+    </tr>
+    <tr>
+        <td>Shults Toyota Scion</td>
+        <td><%= @@sts_count %></td>
+        <td>$<%= @@sts_total %>.00</td>
+    </tr>
+    <tr>
+        <td>Ed Shults of Warren</td>
+        <td><%= @@esw_count %></td>
+        <td>$<%= @@esw_total %>.00</td>
+    </tr>
+    <tr>
+        <td>Shults Sales &amp; Leasing</td>
+        <td><%= @@ssl_count %></td>
+        <td>$<%= @@ssl_total %>.00</td>
+    </tr>
+    <tr>
+        <td>Shults Resale Center</td>
+        <td><%= @@src_count %></td>
+        <td>$<%= @@src_total %>.00</td>
+    </tr>
+    <tr>
+        <td>Shults of Westfield</td>
+        <td><%= @@sw_count %></td>
+        <td>$<%= @@sw_total %>.00</td>
+    </tr>
+</table>
+<br /><br />
+
+<table class="table table-striped">
+  <tr>
+    <th>Dealership</th>
+    <th>Deal number</th>
+    <th>Last name</th>
+    <th>Selection</th>
+    <th>Amount</th>
+  </tr>
+
+<% @updates.each do |update| %>
+  <tr>
+    <td><%= update.dealership %></td>
+    <td><%= update.deal_number %></td>
+    <td><%= update.last_name %></td>
+    <td><%= update.selection %></td>
+    <td>$<%= update.amout %>.00</td>
+    <td><%= update.total %></td>
+    <td><%= link_to 'Show', update %></td>
+    <td><%= link_to 'Edit', edit_update_path(update) %></td>
+    <td><%= link_to 'Destroy', update, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+
+
+<% else %>
+You are not authorized to view this information. Please <%= link_to "click here to sign in", new_user_session_path %>.
+<% end %>

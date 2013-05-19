@@ -1,0 +1,41 @@
+<%= simple_form_for(@update) do |f| %>
+  <% if @update.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@update.errors.count, "error") %> prohibited this update from being saved:</h2>
+
+      <ul>
+      <% @update.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dealership %>
+    <%= f.select :dealership, [['Ed Shults Chevy'],['Ed Shults Ford Lincoln'],['Edmond Chevrolet Buick GMC'], ['Shults Nissan Subaru'], ['Shults Toyota Scion'], ['Ed Shults of Warren'], ['Shults Sales & Leasing'], ['Shults Resale Center'], ['Shults of Westfield']] %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :deal_number %>
+    <%= f.number_field :deal_number %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :selection %>
+    <%= f.select :selection, [['WCA Hospital'],['Chautauqua County Humane Society'],['Chautaugua County Hospice'],['Local Volunteer Fire Departments'],['Chautauqua County Community Foundation'],['Local Veterans Organizations'],['YMCA'],['CARE for Children, McKean County'],['Bradford Hospital Foundation'],['Boy Scouts of America, Local Chapter'],['Girl Scouts of America, Local Chapter'],['United Fund of Warren County'],['Warren General Hospital'],['Mt. Irenaeus Franciscan Mountain Retreat'],['Home Care & Hospice of Cattaraugus County'],['Olean General Hospital Foundation'],['RO Foundation'],['Westfield Hospital Foundation'],['Petterson Library'],['Westfield Food Pantry'],['Westfield Fire Department']] %>
+  </div>
+  <br />
+  <div class="field">
+    Amount <br />
+    <%= f.select :amout, [['$50.00', '50']] %> 
+  </div>
+  <div class="actions">
+    <div class="btn btn-primary"><%= f.submit %></div>
+  </div>
+<% end %>

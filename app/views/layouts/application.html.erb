@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shults Heroes</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<a href="#" class="brand"> Shults Heroes</a>
+				<ul class="nav">
+					<%if user_signed_in? %>
+						<li><%= link_to "Reports", updates_path %></li>
+						<li><%= link_to "Add Entry", new_update_path %></li>
+						<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+
+						<% else %>
+							<li><%= link_to "Sign In", new_user_session_path %>
+					<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+
+	
+		<%= yield %>
+
+		
+	
+</div>
+</body>
+</html>

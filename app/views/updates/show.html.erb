@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Dealership:</b>
+  <%= @update.dealership %>
+</p>
+
+<p>
+  <b>Deal number:</b>
+  <%= @update.deal_number %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @update.last_name %>
+</p>
+
+<p>
+  <b>Selection:</b>
+  <%= @update.selection %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  $<%= @update.amout %>.00
+</p>
+
+
+<%= link_to 'Edit', edit_update_path(@update) %> |
+<%= link_to 'Back', updates_path %>
