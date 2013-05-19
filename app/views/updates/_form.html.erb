@@ -18,7 +18,7 @@
   <br />
   <div class="field">
     <%= f.label :deal_number %>
-    <%= f.number_field :deal_number %>
+    <%= f.number_field :deal_number, :maxlength => 8 %>
   </div>
   <br />
   <div class="field">
@@ -36,6 +36,6 @@
     <%= f.select :amout, [['$50.00', '50']] %> 
   </div>
   <div class="actions">
-    <div class="btn btn-primary"><%= f.submit %></div>
+    <%= f.submit %>
   </div>
 <% end %>
