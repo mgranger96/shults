@@ -56,7 +56,7 @@
         <% when "Ed Shults of Warren" %>
             <% @@esw_total = update.amout + @@esw_total %>
             <% @@esw_count = @@esw_total/50 %>
-        <% when "Shults Sales & Leasing" %>
+        <% when "Shults Resale Center - Olean" %>
             <% @@ssl_total = update.amout + @@ssl_total %>
             <% @@ssl_count = @@ssl_total/50 %>
         <% when "Shults Resale Center" %>
@@ -113,7 +113,7 @@ Total: $<%= @@total %>.00
         <td>$<%= @@esw_total %>.00</td>
     </tr>
     <tr>
-        <td>Shults Sales &amp; Leasing</td>
+        <td>Shults Resale Center - Olean</td>
         <td><%= @@ssl_count %></td>
         <td>$<%= @@ssl_total %>.00</td>
     </tr>
